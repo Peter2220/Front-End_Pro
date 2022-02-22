@@ -34,7 +34,7 @@ The onbeforeunload event occurs when the document is about to be unloaded.
 This event allows you to display a message in a confirmation dialog box to inform the user whether to stay or leave the current page. 
 */
 window.onbeforeunload = function () {
-    window.scrollTo(0, 0);
+    window.scrollTo({top: 0,  behavior: 'smooth'});
 }; 
 
 function createListItem(){
