@@ -95,18 +95,19 @@ function checkViewPort(element){
     return (rect.top); 
 }
 
-// add or remove active class based on the rect output from this function getBoundingClientRect().
-function activeSection() {
-    for (sec of sections){
-        if(checkViewPort(sec) >= 0){
-            if(!sec.classList.contains('your-active-class')){
-                sec.classList.add('your-active-class');
-        }
-        }else{
-            sec.classList.remove('your-active-class');
-        }
-    }
-}
+// Add or remove active class based on the rect output from this function getBoundingClientRect().
+activeSection = window.onscroll = function () {
+	document.querySelectorAll("section").forEach(function(active){
+		if(
+		active.getBoundingClientRect().top>= -400 &&
+		active.getBoundingClientRect().top <= 150
+		) {
+			active.classList.add("your-active-class");
+		} else {
+			active.classList.remove("your-active-class");
+		}
+	});
+};
 
 // Add event to apply the function based on the scroll
 document.addEventListener('scroll', activeSection);
