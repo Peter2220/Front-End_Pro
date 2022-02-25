@@ -51,6 +51,13 @@ function createListItem(){
         let secName = document.createTextNode(`Section ${x + 1}`);
         let a = document.createElement('a');
 
+        // Add css class to link
+        a.classList.add("navlink")
+        // Listen to click on link
+        a.addEventListener('click', (e) => {
+          activeNav(e) // Call function on click
+        })
+
         a.style.cssText = 'text-decoration: none; font-weight: bold';
         addListItem.appendChild(a);
 
@@ -66,6 +73,20 @@ function createListItem(){
 
 }
 createListItem();
+
+// Function for link click
+const activeNav = (e) => {
+	// Call function to clear all active links
+  clearNav() 
+  // Add active class to clicked link
+  e.target.classList.add("active")  
+}
+// Function to clear all active links
+const clearNav = () => {
+	// Get all links with previously added class
+  const links = document.querySelectorAll('.navlink') 
+  links.forEach(l => l.classList.remove('active'))
+}
 
 // Is the section in the viewport?
 function checkViewPort(element){
@@ -86,7 +107,6 @@ function activeSection() {
         }
     }
 }
-
 
 // Add event to apply the function based on the scroll
 document.addEventListener('scroll', activeSection);
