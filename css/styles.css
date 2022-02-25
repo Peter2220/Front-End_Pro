@@ -60,6 +60,10 @@ section {
     min-height: 80vh;
 }
 
+/* Class for active link */
+.active {
+    background-color: #83c4f8 !important;
+}
 
 /* ---- Module Rules ---- */
 
